@@ -13,6 +13,9 @@ Only tested on Linux (Ubuntu Mate 16.04).
 ### How does OpenGospel work?
 In reality, OpenGospel is a web browser. Offline functionality is achieved by having local HTML files, which OpenGospel reads from.
 
+### Whoa. Alpha. It must be super unstable.
+On the contrary. It is marked as alpha because OpenGospel is nowhere feature-complete. It is however, stable enough for everyday use.
+
 ### How can I help?
 * Take a look at the Roadmap, and help with goals there.
 * Test OpenGospel on other operating systems.
