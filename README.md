@@ -1,4 +1,4 @@
-# OpenGospel 0.0.1 Alpha
+# OpenGospel 0.1 Dev
 Read your scriptures on your computer. Completely disconnected from the internet.
 
 ### What is OpenGospel?
