@@ -15,17 +15,17 @@ In reality, OpenGospel is a web browser. Offline functionality is achieved by ha
 
 ### How do I test it?
 First use:
-    1. Install python3, python-webkit, and gir1.2-webkit-3.0
-    2. Download and uzip OpenGospel
-    3. Open a terminal
-    4. Change to the directory you unpacked OpenGospel
-    5. Run chmod +x scriptures.py
-    6. Run by typing  ./scriptures.py
+1. Install python3, python-webkit, and gir1.2-webkit-3.0
+2. Download and uzip OpenGospel
+3. Open a terminal
+4. Change to the directory you unpacked OpenGospel
+5. Run chmod +x scriptures.py
+6. Run by typing  ./scriptures.py
     
 Every other use:
-    1. Open a terminal
-    2. Change to the directory you unpacked OpenGospel
-    3. Run by typing  ./scriptures.py
+1. Open a terminal
+2. Change to the directory you unpacked OpenGospel
+3. Run by typing  ./scriptures.py
 
 ### How can I help?
 * Take a look at the Roadmap, and help with goals there.
