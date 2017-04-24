@@ -8,7 +8,7 @@ The goal of this project is to bring an open source and redistributable set of s
 
 ### What Operating Systems will it work on?
 In theory, anything that works with Python and GTK. (Possibly including Windows, but that is not the goal of this project.)
-Only tested on Linux (Ubuntu Mate 16.04 and Kubuntu 16.04).
+Only tested on Linux (Ubuntu Mate 16.04, Kubuntu 16.04, and Arch Linux).
 
 ### How does OpenGospel work?
 In reality, OpenGospel is a web browser. Offline functionality is achieved by having local HTML files, which OpenGospel reads from.
