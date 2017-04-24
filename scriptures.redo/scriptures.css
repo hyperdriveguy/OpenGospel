@@ -1,0 +1,16 @@
+p {
+	font-size: 110%;
+	font: sans, serif, monospace;
+}
+
+.first {
+	font-size: 150%;
+}
+
+b {
+	font-size: 70%;
+}
+
+h1 {
+	text-align: center;
+}
