@@ -6,8 +6,9 @@ before_install:
   - sudo apt-get install -y python3 libwebkit2gtk-3.0-dev python3-gi
   - rm opengospel.conf
   - pwd
+  - chmod +x scriptures.py
 notifications:
   email:
     recipients:
       - hyperdriveguy@gmail.com
-script: timeout 1m "python3 scriptures.py"
+script: timeout 1m "./scriptures.py"
