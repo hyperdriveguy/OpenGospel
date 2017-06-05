@@ -7,6 +7,7 @@ before_install:
   - rm opengospel.conf
   - pwd
   - chmod +x scriptures.py
+install: "pip install PyGGI"
 notifications:
   email:
     recipients:
