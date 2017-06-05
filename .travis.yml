@@ -1,0 +1,8 @@
+language: python
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y python3 libwebkit2gtk-4.0-dev python3-gi
+notifications:
+  email:
+    recipients:
+      - hyperdriveguy@gmail.com
