@@ -4,6 +4,7 @@ python: "3.6"
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y python3 libwebkit2gtk-3.0-dev python3-gi
+  - cd OpenGospel
   - rm opengospel.conf
 notifications:
   email:
