@@ -7,8 +7,8 @@ It was inspired by the application "Gospel Library". Sadly, Gospel Library does 
 The goal of this project is to bring an open source and redistributable set of scriptures that works on Unix-like systems.
 
 ### What Operating Systems will it work on?
-In theory, anything that works with Python and GTK 3. (Possibly including Windows, but that is not the goal of this project.)  
-Only tested on GNU/Linux (Ubuntu Mate 16.04, Kubuntu 16.04, and Arch Linux).
+In theory, anything that works with Python and GTK 3. (Possibly including Windows, but that is not the goal of this project.)
+Only tested on Linux (Ubuntu Mate 16.04, Kubuntu 16.04, and Arch Linux).
 
 ### How does OpenGospel work?
 Offline functionality is achieved by having local HTML files, which OpenGospel reads from using Webkit.
