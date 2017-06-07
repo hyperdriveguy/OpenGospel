@@ -13,7 +13,6 @@ config = "opengospel.conf"
 # Apply configuration
 with open(config, "r") as getconf:
 	if getconf.read(1) == "T":
-		global gladefile
 		gladefile = "scriptures-csd.glade"
 	elif getconf.read(1) == "F":
 		gladefile = "scriptures.glade"
@@ -49,7 +48,7 @@ class MainWindow:
 		self.webview.connect('title-changed', self.change_title)
 		self.webview.connect('load-committed', self.change_current_url)
 		self.webview.show()
-   
+
 	def on_menu_clicked(self, widget):
 		# Statically set Main Menu
 		self.webview.open('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
@@ -59,17 +58,7 @@ class MainWindow:
 		self.webview.go_back()
  
 	def on_next_clicked(self, widget):
-		global chapter
-		# Eliminate as much as possible to reduce CPU used
-		chapter = current_url[current_url.index('file:'):current_url.index('.html')]
-		isInt = False
-		while isInt == False:
-			try:
-				chapter = int(chapter)
-				isInt = True
-			except ValueError:
-				chapter = chapter[1:]
-				
+		calculate_chapter()
 		next_chapter = chapter + 1
 		global next_url
 		next_url = current_url.replace(str(chapter)+".html",str(next_chapter)+".html")
@@ -77,15 +66,7 @@ class MainWindow:
 		self.webview.open(next_url)
 		
 	def on_previous_clicked(self, widget):
-		global chapter
-		chapter = current_url[current_url.index('file:'):current_url.index('.html')]
-		isInt = False
-		while isInt == False:
-			try:
-				chapter = int(chapter)
-				isInt = True
-			except ValueError:
-				chapter = chapter[1:]
+		calculate_chapter()
 		prev_chapter = chapter - 1
 		global prev_url
 		prev_url = current_url.replace(str(chapter)+".html",str(prev_chapter)+".html")
@@ -98,7 +79,7 @@ class MainWindow:
 		
 	def on_about_response(self, widget, null):
 		self.about.hide()
-	
+
 	# Settings
 	def on_settingsbutton_clicked(self, widget):
 		self.builder = Gtk.Builder()
@@ -121,7 +102,7 @@ class MainWindow:
 			print("File reads: " + csd_on)
 			if csd_on == "T":
 				self.csdswitch.set_active(True)
-			else: 
+			else:
 				self.csdswitch.set_active(False)
 				csd_on = "F"
 		else:
@@ -176,6 +157,17 @@ class MainWindow:
 		# For Debugging
 		print("Can go back: " + str(self.webview.can_go_back()), file=sys.stderr)
 		print(current_url, file=sys.stderr)
+
+def calculate_chapter():
+		global chapter
+		chapter = current_url[current_url.index('file:'):current_url.index('.html')]
+		isInt = False
+		while isInt == False:
+			try:
+				chapter = int(chapter)
+				isInt = True
+			except ValueError:
+				chapter = chapter[1:]
 
 if __name__ == "__main__":
 	MainWindow()
