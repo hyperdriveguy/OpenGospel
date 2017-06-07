@@ -27,6 +27,6 @@ th, td {
 }
 
 a:hover {
-	color: black
+	color: black;
 	text-decoration: none;
 }
