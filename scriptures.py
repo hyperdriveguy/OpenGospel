@@ -21,7 +21,7 @@ with open(config, "r") as getconf:
 		gladefile = "scriptures.glade"
 
 # OpenGospel version
-ver = "0.2"
+ver = "0.3-dev"
 
 class MainWindow:
 	def __init__(self):
@@ -50,7 +50,6 @@ class MainWindow:
 		self.webview.connect('load-committed', self.change_current_url)
 		self.webview.show()
    
-
 	def on_menu_clicked(self, widget):
 		# Statically set Main Menu
 		self.webview.open('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
@@ -99,7 +98,6 @@ class MainWindow:
 		
 	def on_about_response(self, widget, null):
 		self.about.hide()
-	
 	
 	# Settings
 	def on_settingsbutton_clicked(self, widget):
@@ -179,9 +177,6 @@ class MainWindow:
 		print("Can go back: " + str(self.webview.can_go_back()), file=sys.stderr)
 		print(current_url, file=sys.stderr)
 
-def main ():
-	mainApp = MainWindow()
-	Gtk.main()
-
 if __name__ == "__main__":
-	main()
+	MainWindow()
+	Gtk.main()

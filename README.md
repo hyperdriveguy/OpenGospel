@@ -1,4 +1,4 @@
-# OpenGospel 0.2
+# OpenGospel 0.3-dev
 Read your scriptures on your computer. Completely disconnected from the internet.
 
 ### What is OpenGospel?
