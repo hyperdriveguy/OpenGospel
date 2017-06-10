@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import os, sys, gi
+import os, sys, gi, subprocess
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('WebKit', '3.0')
@@ -194,10 +194,9 @@ def calculate_chapter():
 			chapter = chapter[1:]
 				
 def modecss(style):
-	os.system("rm " + css_dir + "menu.css")
-	os.system("rm " + css_dir + "scriptures.css")
-	os.system("cp -T " + css_dir + "themes/" + style + "menu.css " + css_dir + "menu.css")
-	os.system("cp -T " + css_dir + "themes/" + style + "scriptures.css " + css_dir + "scriptures.css")
+	subprocess.run(["rm", css_dir + "menu.css", css_dir + "scriptures.css"], check=True)
+	subprocess.run(["cp", "-T", css_dir + "themes/" + style + "menu.css", css_dir + "menu.css"], check=True)
+	subprocess.run(["cp", "-T", css_dir + "themes/" + style + "scriptures.css", css_dir + "scriptures.css"], check=True)
 
 if __name__ == "__main__":
 	MainWindow()
