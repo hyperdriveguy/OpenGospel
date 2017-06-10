@@ -8,6 +8,7 @@ from gi.repository import Gtk, WebKit
 
 # Working directory - change this to where OpenGospel is
 wrk_dir = '/home/carson/Documents/OpenGospel'
+css_dir = wrk_dir + '/scriptures.redo/'
 config = "opengospel.conf"
 
 # Apply configuration
@@ -56,7 +57,7 @@ class MainWindow:
 	def on_last_clicked(self, widget):
 		# Go to the Previous Page
 		self.webview.go_back()
- 
+
 	def on_next_clicked(self, widget):
 		calculate_chapter()
 		next_chapter = chapter + 1
@@ -90,25 +91,36 @@ class MainWindow:
 		self.applysettings = self.builder.get_object("applysettings")
 		self.canelsettings = self.builder.get_object("cancelsettings")
 		self.csdswitch = self.builder.get_object("csdswitch")
+		self.nightmodeswitch = self.builder.get_object("nightmodeswitch")
 		self.restartdialog = self.builder.get_object("restartdialog")
 		self.restartok = self.builder.get_object("restartok")
 		self.settings.show()
 		self.csdswitch.connect("notify::active", self.on_csdswitch_activate)
+		self.nightmodeswitch.connect("notify::active", self.on_nightmodeswitch_activate)
 		global csd_on
 		global setconf
 		if os.path.isfile(config) == True:
 			setconf = open(config, "r+")
 			csd_on = setconf.read(1)
-			print("File reads: " + csd_on)
+			print("File reads: CSD on " + csd_on)
 			if csd_on == "T":
 				self.csdswitch.set_active(True)
 			else:
 				self.csdswitch.set_active(False)
 				csd_on = "F"
+			nightmode_on = setconf.read(2)
+			print("File reads: Night mode on " + nightmode_on)
+			if nightmode_on == "T":
+				self.nightmodeswitch.set_active(True)
+			else:
+				self.nightmodeswitch.set_active(False)
+				nightmode_on = "F"
 		else:
 			setconf = open(config, "w+")
 			csd_on = "F"
+			nightmode_on = "F"
 			self.csdswitch.set_active(False)
+			self.nightmodeswitch.set_active(False)
 
 	def on_csdswitch_activate(self, widget, gparam):
 		global csd_on
@@ -117,12 +129,24 @@ class MainWindow:
 		else:
 			csd_on = "F"
 		print("CSD on: " + csd_on)
+		
+	def on_nightmodeswitch_activate(self, widget, gparam):
+		global nightmode_on
+		if self.nightmodeswitch.get_active():
+			nightmode_on = "T"
+		else:
+			nightmode_on = "F"
+		print("Night Mode on: " + nightmode_on)
 
 	def on_applysettings_clicked(self, widget):
 		self.restartdialog.show()
 		setconf.seek(0)
-		setconf.write(csd_on)
-		print("Wrote: " + csd_on)
+		setconf.write(csd_on + nightmode_on)
+		if nightmode_on == "T":
+			modecss("night")
+		else:
+			modecss("normal")
+		print("Wrote: " + csd_on + nightmode_on)
 		setconf.close()
 	def on_cancelsettings_clicked(self, widget):
 		setconf.close()
@@ -159,15 +183,21 @@ class MainWindow:
 		print(current_url, file=sys.stderr)
 
 def calculate_chapter():
-		global chapter
-		chapter = current_url[current_url.index('file:'):current_url.index('.html')]
-		isInt = False
-		while isInt == False:
-			try:
-				chapter = int(chapter)
-				isInt = True
-			except ValueError:
-				chapter = chapter[1:]
+	global chapter
+	chapter = current_url[current_url.index('file://' + wrk_dir):current_url.index('.html')]
+	isInt = False
+	while isInt == False:
+		try:
+			chapter = int(chapter)
+			isInt = True
+		except ValueError:
+			chapter = chapter[1:]
+				
+def modecss(style):
+	os.system("rm " + css_dir + "menu.css")
+	os.system("rm " + css_dir + "scriptures.css")
+	os.system("cp -T " + css_dir + "themes/" + style + "menu.css " + css_dir + "menu.css")
+	os.system("cp -T " + css_dir + "themes/" + style + "scriptures.css " + css_dir + "scriptures.css")
 
 if __name__ == "__main__":
 	MainWindow()
