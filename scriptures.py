@@ -45,7 +45,7 @@ class MainWindow:
 		# Webkit
 		self.webview = WebKit.WebView()
 		self.scrolledwindow.add(self.webview)
-		self.webview.open('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
+		self.webview.open('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
 		self.webview.connect('title-changed', self.change_title)
 		self.webview.connect('load-committed', self.change_current_url)
 		self.webview.show()
@@ -63,7 +63,6 @@ class MainWindow:
 		next_chapter = chapter + 1
 		global next_url
 		next_url = current_url.replace(str(chapter)+".html",str(next_chapter)+".html")
-				
 		self.webview.open(next_url)
 		
 	def on_previous_clicked(self, widget):
@@ -71,13 +70,12 @@ class MainWindow:
 		prev_chapter = chapter - 1
 		global prev_url
 		prev_url = current_url.replace(str(chapter)+".html",str(prev_chapter)+".html")
-		
 		self.webview.open(prev_url)
-		
+
 	def on_aboutbutton_clicked(self, widget):
 		self.about.set_version("Version " + ver)
 		self.about.show()
-		
+
 	def on_about_response(self, widget, null):
 		self.about.hide()
 
@@ -102,14 +100,12 @@ class MainWindow:
 		if os.path.isfile(config) == True:
 			setconf = open(config, "r+")
 			csd_on = setconf.read(1)
-			print("File reads: CSD on " + csd_on)
 			if csd_on == "T":
 				self.csdswitch.set_active(True)
 			else:
 				self.csdswitch.set_active(False)
 				csd_on = "F"
 			nightmode_on = setconf.read(2)
-			print("File reads: Night mode on " + nightmode_on)
 			if nightmode_on == "T":
 				self.nightmodeswitch.set_active(True)
 			else:
@@ -128,7 +124,6 @@ class MainWindow:
 			csd_on = "T"
 		else:
 			csd_on = "F"
-		print("CSD on: " + csd_on)
 		
 	def on_nightmodeswitch_activate(self, widget, gparam):
 		global nightmode_on
@@ -136,7 +131,6 @@ class MainWindow:
 			nightmode_on = "T"
 		else:
 			nightmode_on = "F"
-		print("Night Mode on: " + nightmode_on)
 
 	def on_applysettings_clicked(self, widget):
 		self.restartdialog.show()
@@ -146,7 +140,8 @@ class MainWindow:
 			modecss("night")
 		else:
 			modecss("normal")
-		print("Wrote: " + csd_on + nightmode_on)
+		# For debugging the config
+		# print("Wrote: " + csd_on + nightmode_on, file=sys.stderr)
 		setconf.close()
 	def on_cancelsettings_clicked(self, widget):
 		setconf.close()
@@ -159,28 +154,21 @@ class MainWindow:
 	# Webview specific stuff
 	def change_title(self, widget, frame, title):
 		self.scriptures.set_title(title + " - OpenGospel " + ver)
-	 
+
 	def change_current_url(self, widget, frame):
 		global current_url
 		current_url = frame.get_uri()
-		self.last.set_sensitive(self.webview.can_go_back() )
+		self.last.set_sensitive(self.webview.can_go_back())
 		
-		if "menu" in current_url:
+		if "menu" in current_url or "http" in current_url:
 			self.next.set_sensitive(False)
 			self.previous.set_sensitive(False)
-		
+
 		else:
 			self.next.set_sensitive(True)
 			self.previous.set_sensitive(True)
 			if current_url == 'file://' + wrk_dir + '/scriptures.redo/bom/1nephi/1.html':
 				self.previous.set_sensitive(False)
-				
-				# Debugging
-				print("No chapter before this", file=sys.stderr)
-		
-		# For Debugging
-		print("Can go back: " + str(self.webview.can_go_back()), file=sys.stderr)
-		print(current_url, file=sys.stderr)
 
 def calculate_chapter():
 	global chapter
@@ -192,7 +180,7 @@ def calculate_chapter():
 			isInt = True
 		except ValueError:
 			chapter = chapter[1:]
-				
+
 def modecss(style):
 	subprocess.run(["rm", css_dir + "menu.css", css_dir + "scriptures.css"], check=True)
 	subprocess.run(["cp", "-T", css_dir + "themes/" + style + "menu.css", css_dir + "menu.css"], check=True)
