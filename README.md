@@ -15,7 +15,7 @@ Offline functionality is achieved by having local HTML files, which OpenGospel r
 
 ### How do I test it?
 First use:
-1. Install Python 3, Webkit2GTK, and Python GObject from your distribution's repositories.
+1. Install Python 3, WebKitGTK (The legacy version), and Python GObject from your distribution's repositories.
 2. Download and extract OpenGospel
 3. Open a terminal
 4. Change to the directory you unpacked OpenGospel
