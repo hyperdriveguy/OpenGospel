@@ -1,13 +1,17 @@
 #!/usr/bin/python
-import os, sys, gi, subprocess
+import os, gi, subprocess
+
+# Only used in debugging
+import sys
 
 gi.require_version('Gtk', '3.0')
-gi.require_version('WebKit', '3.0')
+gi.require_version('WebKit2', '4.0')
 
-from gi.repository import Gtk, WebKit
+from gi.repository import Gtk, WebKit2 as WebKit
 
 # Working directory - change this to where OpenGospel is
-wrk_dir = '/home/carson/Documents/OpenGospel'
+wrk_dir = '/home/carson/Documents/coding/opengospel'
+
 css_dir = wrk_dir + '/scriptures.redo/'
 config = "opengospel.conf"
 
@@ -44,15 +48,16 @@ class MainWindow:
 		self.scriptures.show_all()
 		# Webkit
 		self.webview = WebKit.WebView()
+		self.weburi = WebKit.URIRequest()
 		self.scrolledwindow.add(self.webview)
-		self.webview.open('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
-		self.webview.connect('title-changed', self.change_title)
-		self.webview.connect('load-committed', self.change_current_url)
+		self.webview.load_uri('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
+		self.webview.connect('notify::title', self.change_title)
+		self.webview.connect('load-changed', self.change_current_url)
 		self.webview.show()
 
 	def on_menu_clicked(self, widget):
 		# Statically set Main Menu
-		self.webview.open('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
+		self.webview.load_uri('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
 
 	def on_last_clicked(self, widget):
 		# Go to the Previous Page
@@ -63,14 +68,14 @@ class MainWindow:
 		next_chapter = chapter + 1
 		global next_url
 		next_url = current_url.replace(str(chapter)+".html",str(next_chapter)+".html")
-		self.webview.open(next_url)
+		self.webview.load_uri(next_url)
 		
 	def on_previous_clicked(self, widget):
 		calculate_chapter()
 		prev_chapter = chapter - 1
 		global prev_url
 		prev_url = current_url.replace(str(chapter)+".html",str(prev_chapter)+".html")
-		self.webview.open(prev_url)
+		self.webview.load_uri(prev_url)
 
 	def on_aboutbutton_clicked(self, widget):
 		self.about.set_version("Version " + ver)
@@ -152,12 +157,13 @@ class MainWindow:
 		self.restartdialog.destroy()
 		Gtk.main_quit()
 	# Webview specific stuff
-	def change_title(self, widget, frame, title):
-		self.scriptures.set_title(title + " - OpenGospel " + ver)
+	def change_title(self, widget, title):
+		title_str = str(self.webview.get_title())
+		self.scriptures.set_title(title_str + " - OpenGospel " + ver)
 
 	def change_current_url(self, widget, frame):
 		global current_url
-		current_url = frame.get_uri()
+		current_url = self.webview.get_uri()
 		self.last.set_sensitive(self.webview.can_go_back())
 		
 		if "menu" in current_url or "http" in current_url:
