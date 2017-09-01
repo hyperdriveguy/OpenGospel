@@ -1,11 +1,11 @@
 html {
-	background: black;
+	background: white;
 }
 
 p {
 	font-size: 110%;
 	font: sans, serif, monospace;
-	color: white;
+	color: black;
 }
 
 .first {
@@ -18,7 +18,7 @@ b {
 
 h1 {
 	text-align: center;
-	color: white;
+	color: black;
 }
 
 table {
@@ -29,7 +29,7 @@ table {
 
 th, td { 
 	padding: 10px;
-	color: white;
+	color: black;
 }
 
 a:hover {

@@ -9,23 +9,34 @@ gi.require_version('WebKit2', '4.0')
 
 from gi.repository import Gtk, WebKit2 as WebKit
 
+# OpenGospel Constants
 # Working directory - change this to where OpenGospel is
 wrk_dir = '/home/carson/Documents/coding/opengospel'
-
 css_dir = wrk_dir + '/scriptures.redo/'
 config = wrk_dir + '/opengospel.conf'
-
-# Apply configuration
-with open(config, "r") as getconf:
-	if getconf.read(1) == "T":
-		gladefile = "scriptures-csd.glade"
-	elif getconf.read(1) == "F":
-		gladefile = "scriptures.glade"
-	else:
-		gladefile = "scriptures.glade"
-
 # OpenGospel version
 ver = "0.3-dev"
+
+class ConfigInit:
+	def modecss(style):
+		subprocess.run(["rm", css_dir + "menu.css", css_dir + "scriptures.css"], check=True)
+		subprocess.run(["cp", "-T", css_dir + "themes/" + style + "menu.css", css_dir + "menu.css"], check=True)
+		subprocess.run(["cp", "-T", css_dir + "themes/" + style + "scriptures.css", css_dir + "scriptures.css"], check=True)
+	
+	def glade_init(conf_file):
+		# Globally declare the glade file
+		global gladefile
+		try:
+			with open(conf_file, "r") as getconf:
+				if getconf.read(1) == "T":
+					gladefile = "scriptures-csd.glade"
+				elif getconf.read(1) == "F":
+					gladefile = "scriptures.glade"
+				else:
+					gladefile = "scriptures.glade"
+		except FileNotFoundError:
+					gladefile = "scriptures.glade"
+			
 
 class MainWindow:
 	def __init__(self):
@@ -39,8 +50,6 @@ class MainWindow:
 		self.next = self.builder.get_object("next")
 		self.menu = self.builder.get_object("menu")
 		self.previous = self.builder.get_object("previous")
-		# About
-		self.about = self.builder.get_object("about")
 		# Scriptures
 		self.scriptures = self.builder.get_object("scriptures")
 		self.scriptures.connect('destroy', lambda w: Gtk.main_quit())
@@ -77,17 +86,21 @@ class MainWindow:
 		self.webview.load_uri(prev_url)
 
 	def on_aboutbutton_clicked(self, widget):
+		# About
+		self.builder.add_from_file(gladefile)
+		self.builder.connect_signals(self)
+		self.about = self.builder.get_object("about")
 		self.about.set_version("Version " + ver)
-		self.about.show()
+		self.about.show_all()
 
-	def on_about_response(self, widget, null):
+	def on_about_close(self, widget, null):
 		self.about.hide()
 
 	# Settings
 	def on_settingsbutton_clicked(self, widget):
 		self.builder = Gtk.Builder()
 		# Get UI
-		self.builder.add_from_file("scriptures.glade")
+		self.builder.add_from_file(gladefile)
 		self.builder.connect_signals(self)
 		self.settings = self.builder.get_object("settings")
 		self.applysettings = self.builder.get_object("applysettings")
@@ -104,18 +117,22 @@ class MainWindow:
 		global setconf
 		if os.path.isfile(config) == True:
 			setconf = open(config, "r+")
+			
 			csd_on = setconf.read(1)
 			if csd_on == "T":
 				self.csdswitch.set_active(True)
 			else:
 				self.csdswitch.set_active(False)
 				csd_on = "F"
+			#print("csd_on: " + csd_on, file=sys.stderr)
+				
 			nightmode_on = setconf.read(2)
 			if nightmode_on == "T":
 				self.nightmodeswitch.set_active(True)
 			else:
 				self.nightmodeswitch.set_active(False)
 				nightmode_on = "F"
+			#print("nightmode_on: " + nightmode_on, file=sys.stderr)
 		else:
 			setconf = open(config, "w+")
 			csd_on = "F"
@@ -142,9 +159,9 @@ class MainWindow:
 		setconf.seek(0)
 		setconf.write(csd_on + nightmode_on)
 		if nightmode_on == "T":
-			modecss("night")
+			ConfigInit.modecss("night")
 		else:
-			modecss("normal")
+			ConfigInit.modecss("normal")
 		# For debugging the config
 		#print("Wrote: " + csd_on + nightmode_on, file=sys.stderr)
 		setconf.close()
@@ -187,11 +204,7 @@ def calculate_chapter():
 		except ValueError:
 			chapter = chapter[1:]
 
-def modecss(style):
-	subprocess.run(["rm", css_dir + "menu.css", css_dir + "scriptures.css"], check=True)
-	subprocess.run(["cp", "-T", css_dir + "themes/" + style + "menu.css", css_dir + "menu.css"], check=True)
-	subprocess.run(["cp", "-T", css_dir + "themes/" + style + "scriptures.css", css_dir + "scriptures.css"], check=True)
-
 if __name__ == "__main__":
+	ConfigInit.glade_init(config)
 	MainWindow()
 	Gtk.main()
