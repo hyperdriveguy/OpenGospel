@@ -11,7 +11,7 @@ In theory, anything that works with Python and GTK 3.
 OpenGospel has only been tested on a variety of GNU/Linux distributions, Including:
 * Ubuntu Mate 16.04
 * Kubuntu 16.04
-* Arch Linux (XFCE, LXDE, and GNOME)
+* Arch Linux (XFCE, LXDE, and GNOME)  
 Full support for Wayland compositors is underway.
 
 ### How does OpenGospel work?
