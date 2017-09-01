@@ -2,7 +2,7 @@
 import os, gi, subprocess
 
 # Only used in debugging
-import sys
+#import sys
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('WebKit2', '4.0')
@@ -13,7 +13,7 @@ from gi.repository import Gtk, WebKit2 as WebKit
 wrk_dir = '/home/carson/Documents/coding/opengospel'
 
 css_dir = wrk_dir + '/scriptures.redo/'
-config = "opengospel.conf"
+config = wrk_dir + '/opengospel.conf'
 
 # Apply configuration
 with open(config, "r") as getconf:
@@ -48,7 +48,6 @@ class MainWindow:
 		self.scriptures.show_all()
 		# Webkit
 		self.webview = WebKit.WebView()
-		self.weburi = WebKit.URIRequest()
 		self.scrolledwindow.add(self.webview)
 		self.webview.load_uri('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
 		self.webview.connect('notify::title', self.change_title)
@@ -100,6 +99,7 @@ class MainWindow:
 		self.settings.show()
 		self.csdswitch.connect("notify::active", self.on_csdswitch_activate)
 		self.nightmodeswitch.connect("notify::active", self.on_nightmodeswitch_activate)
+		global nightmode_on
 		global csd_on
 		global setconf
 		if os.path.isfile(config) == True:
@@ -146,7 +146,7 @@ class MainWindow:
 		else:
 			modecss("normal")
 		# For debugging the config
-		# print("Wrote: " + csd_on + nightmode_on, file=sys.stderr)
+		#print("Wrote: " + csd_on + nightmode_on, file=sys.stderr)
 		setconf.close()
 	def on_cancelsettings_clicked(self, widget):
 		setconf.close()
