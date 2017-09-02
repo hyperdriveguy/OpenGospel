@@ -15,7 +15,7 @@ wrk_dir = '/home/carson/Documents/coding/opengospel'
 css_dir = wrk_dir + '/scriptures.redo/'
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
-ver = "0.3-dev"
+ver = "0.3"
 
 class ConfigInit:
 	def modecss(style):

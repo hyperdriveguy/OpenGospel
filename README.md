@@ -1,9 +1,9 @@
-# OpenGospel 0.3-dev
+# OpenGospel 0.3
 Read your scriptures on your computer. Completely disconnected from the internet.
 
 ### What is OpenGospel?
 OpenGospel is a tool to read the Standard Works (The King James Version of the Bible, The Book of Mormon, Doctrine and Covenants and Pearl of Great Price.)
-It was inspired by the application "Gospel Library". Sadly, Gospel Library does not have a Linux port. That's why I started this project.
+It was inspired by the application "Gospel Library". Sadly, Gospel Library does not have a GNU/Linux port. That's why I started this project.
 The goal of this project is to bring an open source and redistributable set of scriptures that works on Unix-like systems.
 
 ### What Operating Systems will it work on?
@@ -13,7 +13,7 @@ OpenGospel has only been tested on a variety of GNU/Linux distributions, Includi
 * Kubuntu 16.04
 * Arch Linux (XFCE, LXDE, and GNOME)  
 
-Full support for Wayland compositors is underway.
+Wayland is fully supported.
 
 ### How does OpenGospel work?
 Offline functionality is achieved by having local HTML files, which OpenGospel reads from using Webkit.
@@ -34,6 +34,6 @@ Every other use:
 
 ### How can I help?
 * Take a look at Issues page and help resolve them.
-* Test OpenGospel on other operating systems.
+* Test OpenGospel on other operating systems and distributions.
 * Test for bugs.
 * Create packages (.deb, .rpm, etc...)
