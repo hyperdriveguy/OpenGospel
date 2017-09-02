@@ -104,12 +104,13 @@ class MainWindow:
 		self.builder.connect_signals(self)
 		self.settings = self.builder.get_object("settings")
 		self.applysettings = self.builder.get_object("applysettings")
-		self.canelsettings = self.builder.get_object("cancelsettings")
+		self.cancelsettings = self.builder.get_object("cancelsettings")
 		self.csdswitch = self.builder.get_object("csdswitch")
 		self.nightmodeswitch = self.builder.get_object("nightmodeswitch")
 		self.restartdialog = self.builder.get_object("restartdialog")
 		self.restartok = self.builder.get_object("restartok")
-		self.settings.show()
+		self.settings.show_all()
+		self.restartdialog.hide()
 		self.csdswitch.connect("notify::active", self.on_csdswitch_activate)
 		self.nightmodeswitch.connect("notify::active", self.on_nightmodeswitch_activate)
 		global nightmode_on
@@ -162,6 +163,8 @@ class MainWindow:
 			ConfigInit.modecss("night")
 		else:
 			ConfigInit.modecss("normal")
+		self.applysettings.set_sensitive(False)
+		self.cancelsettings.set_sensitive(False)
 		# For debugging the config
 		#print("Wrote: " + csd_on + nightmode_on, file=sys.stderr)
 		setconf.close()
