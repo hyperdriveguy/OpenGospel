@@ -22,7 +22,7 @@ class ConfigInit:
 		subprocess.run(["rm", css_dir + "menu.css", css_dir + "scriptures.css"], check=True)
 		subprocess.run(["cp", "-T", css_dir + "themes/" + style + "menu.css", css_dir + "menu.css"], check=True)
 		subprocess.run(["cp", "-T", css_dir + "themes/" + style + "scriptures.css", css_dir + "scriptures.css"], check=True)
-	
+
 	def glade_init(conf_file):
 		# Globally declare the glade file
 		global gladefile
@@ -36,7 +36,7 @@ class ConfigInit:
 					gladefile = "scriptures.glade"
 		except FileNotFoundError:
 					gladefile = "scriptures.glade"
-			
+
 
 class MainWindow:
 	def __init__(self):
@@ -77,7 +77,7 @@ class MainWindow:
 		global next_url
 		next_url = current_url.replace(str(chapter)+".html",str(next_chapter)+".html")
 		self.webview.load_uri(next_url)
-		
+
 	def on_previous_clicked(self, widget):
 		calculate_chapter()
 		prev_chapter = chapter - 1
@@ -118,7 +118,7 @@ class MainWindow:
 		global setconf
 		if os.path.isfile(config) == True:
 			setconf = open(config, "r+")
-			
+
 			csd_on = setconf.read(1)
 			if csd_on == "T":
 				self.csdswitch.set_active(True)
@@ -126,7 +126,7 @@ class MainWindow:
 				self.csdswitch.set_active(False)
 				csd_on = "F"
 			#print("csd_on: " + csd_on, file=sys.stderr)
-				
+
 			nightmode_on = setconf.read(2)
 			if nightmode_on == "T":
 				self.nightmodeswitch.set_active(True)
@@ -147,7 +147,7 @@ class MainWindow:
 			csd_on = "T"
 		else:
 			csd_on = "F"
-		
+
 	def on_nightmodeswitch_activate(self, widget, gparam):
 		global nightmode_on
 		if self.nightmodeswitch.get_active():
@@ -185,7 +185,7 @@ class MainWindow:
 		global current_url
 		current_url = self.webview.get_uri()
 		self.last.set_sensitive(self.webview.can_go_back())
-		
+
 		if "menu" in current_url or "http" in current_url:
 			self.next.set_sensitive(False)
 			self.previous.set_sensitive(False)

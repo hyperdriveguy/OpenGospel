@@ -1,5 +1,5 @@
-# OpenGospel 0.3
-Read your scriptures on your computer. Completely disconnected from the internet.
+# OpenGospel 0.3.1
+Read your scriptures on your computer, distraction free.
 
 ### What is OpenGospel?
 OpenGospel is a tool to read the Standard Works (The King James Version of the Bible, The Book of Mormon, Doctrine and Covenants and Pearl of Great Price.)
@@ -17,6 +17,14 @@ Wayland is fully supported.
 
 ### How does OpenGospel work?
 Offline functionality is achieved by having local HTML files, which OpenGospel reads from using Webkit.
+
+### Available Content
+
+The following content is available offline:
+
+* 1 Nephi (All Chapters)
+
+All other content must be viewed through LDS.org at the moment.
 
 ### How do I test it?
 First use:
