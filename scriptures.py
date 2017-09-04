@@ -1,4 +1,22 @@
 #!/usr/bin/python
+'''
+Copyright (C) 2017
+
+This file is part of OpenGospel.
+
+OpenGospel is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+OpenGospel is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
+'''
 import os, gi, subprocess
 
 # Only used in debugging
@@ -56,7 +74,7 @@ class MainWindow:
 		self.scrolledwindow = self.builder.get_object("scrolledwindow")
 		self.scriptures.show_all()
 		# Webkit
-		self.webview = WebKit.WebView()
+		self.webview = WebKit.WebView.new()
 		self.scrolledwindow.add(self.webview)
 		self.webview.load_uri('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
 		self.webview.connect('notify::title', self.change_title)
