@@ -1,0 +1,101 @@
+#!/bin/bash
+# Copyright (C) 2017
+# This file is part of OpenGospel.
+# OpenGospel is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# OpenGospel is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
+
+# This script does not do dependency checks. Do that yourself.
+
+# If no target is specified
+targetloop=1
+if [ "$1" = "" ] ; then
+	while [ "$targetloop" = 1 ] ; do
+		echo "You did not specify a target directory."
+		echo "The default target is '/usr/local'."
+		read -p "Is this okay? <y/N> " yn
+		case $yn in
+			[Yy]* ) targetloop=0;;
+			[Nn]* ) exit 1;;
+			* ) clear;;
+		esac
+	done
+	targetdir="/usr/local"
+else
+	targetdir=$1
+fi
+
+rm -rf build
+mkdir build
+
+cp scriptures.py build/target.py
+cp -r scriptures.redo build/scriptures.redo
+cp *.glade build/
+cp scriptures.svg build/scriptures.svg
+
+# Code directory fixes
+
+oldbindir="bin_dir = '/home/carson/Documents/coding/opengospel'"
+bindir="bin_dir = '"$targetdir"/bin'"
+
+oldsharedir="share_dir = bin_dir"
+sharedir="share_dir = '"$targetdir"/share/opengospel'"
+sharedir2="$targetdir/share/opengospel"
+
+oldcssdir="css_dir = share_dir + '/scriptures.redo'"
+cssdir="css_dir = os.getenv('HOME') + '/.config/opengospel'"
+cssdir2="~/.config/opengospel"
+
+oldconfigdir="config_dir = bin_dir"
+configdir="config_dir = os.getenv('HOME') + '/.config/opengospel'"
+
+sed -i "s%$oldbindir%$bindir%g" build/target.py
+sed -i "s%$oldsharedir%$sharedir%g" build/target.py
+sed -i "s%$oldcssdir%$cssdir%g" build/target.py
+sed -i "s%$oldconfigdir%$configdir%g" build/target.py
+
+# CSS fixes
+
+grep -rl "./menu.css" build/scriptures.redo | xargs sed -i "s%./menu.css%$cssdir2/menu.css%g"
+grep -rl "./scriptures.css" build/scriptures.redo | xargs sed -i "s%./scriptures.css%$cssdir2/scriptures.css%g"
+
+# Icon setting
+
+grep -rl "scriptures.svg" build | xargs sed -i "s%scriptures.svg%$sharedir2/scriptures.svg%g"
+
+# Warning
+
+echo "Make sure you have all the dependencies related to OpenGospel."
+echo "This script does not check if you have all the dependencies installed."
+
+# Generate executable
+
+echo "#!/bin/sh
+python $targetdir/lib/opengospel.pyc" > build/opengospel
+
+# Generate makefile
+
+echo "PFLAGS=-j0
+
+all:
+	python -Om compileall $(PFLAGS) -d ./ ./
+	cp __pycache__/*.pyc ./opengospel.pyc
+	rm -rf __pycache__
+
+install:
+	mkdir -pv $targetdir/share/opengospel
+	cp -r scriptures.redo $targetdir/share/opengospel/scriptures.redo
+	cp *.glade $targetdir/share/opengospel/
+	cp opengospel.pyc $targetdir/lib/
+	cp opengospel $targetdir/bin/opengospel
+	cp scriptures.svg $targetdir/share/opengospel/scriptures.svg
+
+clean:
+	rm *.pyc" > build/Makefile
