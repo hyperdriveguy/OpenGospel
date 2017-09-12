@@ -28,7 +28,7 @@ All other content must be viewed through LDS.org at the moment.
 
 ### How do I test it?
 First use:
-1. Install Python 3, WebKitGTK (The legacy version), and Python GObject from your distribution's repositories.
+1. Install Python 3, WebKitGTK (The latest version), and Python GObject from your distribution's repositories.
 2. Download and extract OpenGospel
 3. Open a terminal
 4. Change to the directory you unpacked OpenGospel
