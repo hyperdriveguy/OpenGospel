@@ -81,6 +81,17 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
         <property name="can_focus">False</property>
         <property name="orientation">vertical</property>
         <child>
+          <object class="GtkProgressBar" id="loadbar">
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="pack_type">end</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkScrolledWindow" id="scrolledwindow">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -149,7 +160,7 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-media-previous</property>
+                <property name="stock">gtk-go-back</property>
               </object>
             </child>
           </object>
@@ -167,7 +178,7 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
               <object class="GtkImage">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="stock">gtk-media-next</property>
+                <property name="stock">gtk-go-forward</property>
               </object>
             </child>
           </object>
@@ -208,6 +219,8 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
     <property name="skip_taskbar_hint">True</property>
     <property name="transient_for">scriptures</property>
     <property name="program_name">OpenGopsel</property>
+    <property name="copyright" translatable="yes">©2017 Hyperdriveguy (Carson Bush)
+Not an official program of the Church of Jesus Christ of Latter-day Saints</property>
     <property name="website">https://github.com/hyperdriveguy/OpenGospel</property>
     <property name="website_label" translatable="yes">Github</property>
     <property name="authors">Hyperdriveguy (Carson Bush)</property>
@@ -280,7 +293,7 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="fill">True</property>
+                <property name="fill">False</property>
                 <property name="padding">5</property>
                 <property name="position">1</property>
               </packing>
@@ -318,7 +331,7 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
               </object>
               <packing>
                 <property name="expand">False</property>
-                <property name="fill">True</property>
+                <property name="fill">False</property>
                 <property name="padding">5</property>
                 <property name="position">1</property>
               </packing>
@@ -362,6 +375,8 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
                     <property name="margin_left">5</property>
                     <property name="margin_right">5</property>
                     <property name="margin_top">5</property>
@@ -370,8 +385,9 @@ along with OpenGospel.  If not, see <http://www.gnu.org/licenses/>.
                     <signal name="clicked" handler="on_restartok_clicked" swapped="no"/>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
-                    <property name="fill">True</property>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
+                    <property name="padding">5</property>
                     <property name="position">1</property>
                   </packing>
                 </child>

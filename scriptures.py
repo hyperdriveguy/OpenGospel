@@ -89,7 +89,9 @@ class MainWindow:
 		self.scriptures = self.builder.get_object("scriptures")
 		self.scriptures.connect('destroy', lambda w: Gtk.main_quit())
 		self.scrolledwindow = self.builder.get_object("scrolledwindow")
+		self.loadbar = self.builder.get_object("loadbar")
 		self.scriptures.show_all()
+		self.loadbar.hide()
 		# Webkit
 		#self.usercontentmanager = WebKit.UserContentManager.new()
 		#self.stylesheet = WebKit.UserStyleSheet.new("/home/carson/Documents/coding/opengospel/scriptures.redo/themes/nightmenu.css", WebKit.UserContentInjectedFrames(0), WebKit.UserStyleLevel(0))
@@ -228,6 +230,16 @@ class MainWindow:
 		current_url = self.webview.get_uri()
 		self.last.set_sensitive(self.webview.can_go_back())
 
+		if "http" in current_url:
+			if self.webview.get_estimated_load_progress() != 1:
+				self.loadbar.show()
+				self.loadbar.set_fraction(self.webview.get_estimated_load_progress())
+				print(self.webview.get_estimated_load_progress(), file=sys.stderr)
+			else:
+				self.loadbar.hide()
+			
+			
+			
 		if "menu" in current_url or "http" in current_url:
 			self.next.set_sensitive(False)
 			self.previous.set_sensitive(False)
