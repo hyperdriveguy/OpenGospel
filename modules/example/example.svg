@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200px"
+   height="200px"
+   viewBox="0 0 200 200"
+   version="1.1"
+   id="SVGRoot"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="example.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="97.054815"
+     inkscape:cy="94.087613"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="960"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:grid-bbox="true"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       position="0,0"
+       orientation="0,200"
+       id="guide3907"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="200,0"
+       orientation="-200,0"
+       id="guide3909"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="200,200"
+       orientation="0,-200"
+       id="guide3911"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="0,200"
+       orientation="200,0"
+       id="guide3913"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="95.361328,100"
+       orientation="0,1"
+       id="guide3915"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="100,117.67578"
+       orientation="1,0"
+       id="guide3917"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs3875" />
+  <metadata
+     id="metadata3878">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3897"
+       style="fill:black;fill-opacity:1;stroke:none;font-family:sans-serif;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion3899"><rect
+           id="rect3901"
+           width="56.071358"
+           height="42.260677"
+           x="58.833492"
+           y="67.141266" /></flowRegion><flowPara
+         id="flowPara3903"></flowPara></flowRoot>    <circle
+       style="fill:#000080"
+       id="path3919"
+       cx="100.35356"
+       cy="100.00002"
+       r="100" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffff00;fill-opacity:1;stroke:none;"
+       x="99.999405"
+       y="99.999336"
+       id="text3893"><tspan
+         sodipodi:role="line"
+         id="tspan3891"
+         x="99.999405"
+         y="99.999336"
+         style="text-align:center;text-anchor:middle;fill:#ffff00;">Example</tspan><tspan
+         sodipodi:role="line"
+         x="99.999405"
+         y="149.99933"
+         id="tspan3895"
+         style="text-align:center;text-anchor:middle;fill:#ffff00;">Icon</tspan></text>
+  </g>
+</svg>

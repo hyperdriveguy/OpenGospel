@@ -1,0 +1,10 @@
+{
+    "name": "Example Module",
+    "details": {
+        "short_desc": "Just an example.",
+        "long_desc": "Used for testing and a base for new modules.",
+        "version": 0.4,
+        "license": "MIT"
+    },
+    "icon": "example.svg"
+}
