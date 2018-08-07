@@ -1,8 +1,7 @@
-#!/usr/bin/python
-import os, gi, subprocess
+#!/usr/bin/env python3
+import os, gi, subprocess, sys
 
 # Only used in debugging
-#import sys
 
 gi.require_version('Gtk', '3.0')
 gi.require_version('WebKit2', '4.0')
@@ -11,7 +10,7 @@ from gi.repository import Gtk, WebKit2 as WebKit
 
 # OpenGospel Constants
 # Working directory - change this to where OpenGospel is
-wrk_dir = '/home/carson/Documents/coding/opengospel'
+wrk_dir = os.path.dirname(sys.argv[0]) or os.path.dirname(__file__)
 css_dir = wrk_dir + '/scriptures.redo/'
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
