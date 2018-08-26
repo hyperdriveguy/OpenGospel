@@ -11,6 +11,7 @@ from gi.repository import Gtk, WebKit2 as WebKit
 # OpenGospel Constants
 # Working directory - change this to where OpenGospel is
 wrk_dir = os.path.dirname(sys.argv[0]) or os.path.dirname(__file__)
+wrk_dir = os.path.abspath(wrk_dir)
 css_dir = wrk_dir + '/scriptures.redo/'
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
