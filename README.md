@@ -11,7 +11,8 @@ In theory, anything that works with Python and GTK 3.
 OpenGospel has only been tested on a variety of GNU/Linux distributions, Including:
 * Ubuntu Mate 16.04
 * Kubuntu 16.04
-* Arch Linux (XFCE, LXDE, and GNOME)  
+* Arch Linux (XFCE, LXDE, and GNOME)
+* Linux Mint XFCE
 
 Wayland is fully supported.
 
@@ -22,7 +23,7 @@ Offline functionality is achieved by having local HTML files, which OpenGospel r
 
 The following content is available offline:
 
-* 1 Nephi (All Chapters)
+* The entire standard works from scriptures.nephi.org generated using the scriptures html generator script at https://github.com/jgibbons94/scriptures-html-generator
 
 All other content must be viewed through LDS.org at the moment.
 

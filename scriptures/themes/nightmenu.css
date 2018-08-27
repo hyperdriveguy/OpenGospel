@@ -1,0 +1,39 @@
+html {
+	font-family: sans;
+	font-size: 150%;
+	text-decoration: none;
+	background: black;
+	color: white;
+}
+
+a:link {
+	font-family: sans;
+	color: blue;
+	text-decoration: none;
+}
+
+a:visited {
+	font-family: sans;
+	color: blue;
+	text-decoration: none;
+}
+
+a:hover {
+	font-family: sans;
+	color: blue;
+	font-weight: bold;
+	font-size: 110%;
+	text-decoration: none;
+}
+
+a:active {
+	font-family: sans;
+	color: blue;
+	font-weight: bold;
+	font-size: 110%;
+	text-decoration: none;
+}
+
+.center {
+	text-align: center;
+}

@@ -12,10 +12,11 @@ from gi.repository import Gtk, WebKit2 as WebKit
 # Working directory - change this to where OpenGospel is
 wrk_dir = os.path.dirname(sys.argv[0]) or os.path.dirname(__file__)
 wrk_dir = os.path.abspath(wrk_dir)
-css_dir = wrk_dir + '/scriptures.redo/'
+scriptures_dir = wrk_dir + '/scriptures/'
+css_dir = scriptures_dir;
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
-ver = "0.3"
+ver = "0.3.1"
 
 class ConfigInit:
 	def modecss(style):
@@ -58,14 +59,14 @@ class MainWindow:
 		# Webkit
 		self.webview = WebKit.WebView()
 		self.scrolledwindow.add(self.webview)
-		self.webview.load_uri('file://' + wrk_dir + '/scriptures.redo/main-menu.html')
+		self.webview.load_uri('file://' + scriptures_dir + 'main-menu.html')
 		self.webview.connect('notify::title', self.change_title)
 		self.webview.connect('load-changed', self.change_current_url)
 		self.webview.show()
 
 	def on_menu_clicked(self, widget):
 		# Statically set Main Menu
-		self.webview.load_uri('file:' + wrk_dir + '/scriptures.redo/main-menu.html')
+		self.webview.load_uri('file://' + scriptures_dir + '/main-menu.html')
 
 	def on_last_clicked(self, widget):
 		# Go to the Previous Page
@@ -193,7 +194,7 @@ class MainWindow:
 		else:
 			self.next.set_sensitive(True)
 			self.previous.set_sensitive(True)
-			if current_url == 'file://' + wrk_dir + '/scriptures.redo/bom/1nephi/1.html':
+			if current_url == 'file://' + scriptures_dir + '/bom/1nephi/1.html':
 				self.previous.set_sensitive(False)
 
 def calculate_chapter():
