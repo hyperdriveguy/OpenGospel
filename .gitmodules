@@ -1,0 +1,3 @@
+[submodule "scriptures-html"]
+	path = scriptures-html
+	url = https://github.com/jgibbons94/OpenGospel
