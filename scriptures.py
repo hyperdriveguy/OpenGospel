@@ -12,7 +12,7 @@ from gi.repository import Gtk, WebKit2 as WebKit
 # Working directory - change this to where OpenGospel is
 wrk_dir = os.path.dirname(sys.argv[0]) or os.path.dirname(__file__)
 wrk_dir = os.path.abspath(wrk_dir)
-scriptures_dir = wrk_dir + '/scriptures/'
+scriptures_dir = wrk_dir + 'scriptures/'
 css_dir = scriptures_dir;
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
@@ -30,13 +30,13 @@ class ConfigInit:
 		try:
 			with open(conf_file, "r") as getconf:
 				if getconf.read(1) == "T":
-					gladefile = wrk_dir + "scriptures-csd.glade"
+					gladefile = wrk_dir + "/scriptures-csd.glade"
 				elif getconf.read(1) == "F":
-					gladefile = wrk_dir + "scriptures.glade"
+					gladefile = wrk_dir + "/scriptures.glade"
 				else:
-					gladefile = wrk_dir + "scriptures.glade"
+					gladefile = wrk_dir + "/scriptures.glade"
 		except FileNotFoundError:
-					gladefile = wrk_dir + "scriptures.glade"
+					gladefile = wrk_dir + "/scriptures.glade"
 
 
 class MainWindow:
