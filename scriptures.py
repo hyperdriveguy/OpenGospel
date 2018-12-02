@@ -12,7 +12,7 @@ from gi.repository import Gtk, WebKit2 as WebKit
 # Working directory - change this to where OpenGospel is
 wrk_dir = os.path.dirname(sys.argv[0]) or os.path.dirname(__file__)
 wrk_dir = os.path.abspath(wrk_dir)
-scriptures_dir = wrk_dir + 'scriptures/'
+scriptures_dir = wrk_dir + '/generated-standard-works/scriptures/'
 css_dir = scriptures_dir;
 config = wrk_dir + '/opengospel.conf'
 # OpenGospel version
