@@ -30,13 +30,13 @@ class ConfigInit:
 		try:
 			with open(conf_file, "r") as getconf:
 				if getconf.read(1) == "T":
-					gladefile = "scriptures-csd.glade"
+					gladefile = wrk_dir + "scriptures-csd.glade"
 				elif getconf.read(1) == "F":
-					gladefile = "scriptures.glade"
+					gladefile = wrk_dir + "scriptures.glade"
 				else:
-					gladefile = "scriptures.glade"
+					gladefile = wrk_dir + "scriptures.glade"
 		except FileNotFoundError:
-					gladefile = "scriptures.glade"
+					gladefile = wrk_dir + "scriptures.glade"
 
 
 class MainWindow:
