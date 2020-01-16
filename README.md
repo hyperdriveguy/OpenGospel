@@ -15,6 +15,7 @@ OpenGospel has only been tested on a variety of GNU/Linux distributions, Includi
 * Ubuntu Mate 16.04
 * Kubuntu 16.04
 * Arch Linux (XFCE, LXDE, and GNOME)  
+* Linux Mint Cinnamon 19.3
 
 Wayland is fully supported.
 
@@ -26,6 +27,8 @@ Offline functionality is achieved by having local HTML files, which OpenGospel r
 The following content is available offline:
 
 * 1 Nephi (All Chapters)
+* 2 Nephi (Chapters 1-5)
+* The Articles of Faith
 
 All other content must be viewed through LDS.org at the moment.
 
@@ -37,7 +40,7 @@ First use:
 4. Change to the directory you unpacked OpenGospel
 5. Run chmod +x scriptures.py
 6. Run by typing  ./scriptures.py
-    
+
 Every other use:
 1. Open a terminal
 2. Change to the directory you unpacked OpenGospel
