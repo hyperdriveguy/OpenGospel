@@ -6,6 +6,9 @@ OpenGospel is a tool to read the Standard Works (The King James Version of the B
 It was inspired by the application "Gospel Library". Sadly, Gospel Library does not have a GNU/Linux port. That's why I started this project.
 The goal of this project is to bring an open source and redistributable set of scriptures that works on Unix-like systems.
 
+### Who made OpenGospel?
+OpenGospel was originally made by hyperdriveguy, but this fork is made by me, MarshmellowTechnology. There are many more contributors.
+
 ### What Operating Systems will it work on?
 In theory, anything that works with Python and GTK 3.
 OpenGospel has only been tested on a variety of GNU/Linux distributions, Including:
