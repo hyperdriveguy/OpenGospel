@@ -27,7 +27,7 @@ Offline functionality is achieved by having local HTML files, which OpenGospel r
 The following content is available offline:
 
 * 1 Nephi (All Chapters)
-* 2 Nephi (Chapters 1-6)
+* 2 Nephi (Chapters 1-7)
 * The Articles of Faith
 
 All other content must be viewed through LDS.org at the moment.
