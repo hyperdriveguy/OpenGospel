@@ -7,7 +7,7 @@ It was inspired by the application "Gospel Library". Sadly, Gospel Library does 
 The goal of this project is to bring an open source and redistributable set of scriptures that works on Unix-like systems.
 
 ### Who made OpenGospel?
-OpenGospel was originally made by hyperdriveguy, but this fork is made by me, MarshmellowTechnology. There are many more contributors.
+OpenGospel was originally made by hyperdriveguy, but this fork is made by me, MarshmallowTechnology. There are many more contributors.
 
 ### What Operating Systems will it work on?
 In theory, anything that works with Python and GTK 3.
