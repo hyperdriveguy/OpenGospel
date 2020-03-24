@@ -7,7 +7,7 @@ It was inspired by the application "Gospel Library". Sadly, Gospel Library does 
 The goal of this project is to bring an open source and redistributable set of scriptures that works on Unix-like systems.
 
 ### Who made OpenGospel?
-OpenGospel was originally made by hyperdriveguy, but this fork is made by me, MarshmallowTechnology. There are many more contributors.
+OpenGospel was originally made by hyperdriveguy, but this fork is made by me, MarshmallowTechnology.
 
 ### What Operating Systems will it work on?
 In theory, anything that works with Python and GTK 3.
@@ -27,7 +27,7 @@ Offline functionality is achieved by having local HTML files, which OpenGospel r
 The following content is available offline:
 
 * 1 Nephi (All Chapters)
-* 2 Nephi (Chapters 1-28)
+* 2 Nephi (All Chapters)
 * The Articles of Faith
 
 All other content must be viewed through LDS.org at the moment.
